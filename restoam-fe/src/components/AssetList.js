@@ -1,6 +1,6 @@
+import axios from 'axios';
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import axios from 'axios';
 
 function AssetList() {
   const [assets, setAssets] = useState([]);
@@ -17,6 +17,18 @@ function AssetList() {
         setLoading(false);
       });
   }, []);
+
+  const handleDelete = (id) => {
+    axios.delete(`http://localhost:8080/restoam/${id}`)
+      .then(() => {
+        alert('Asset deleted successfully!');
+        setAssets(assets.filter(asset => asset.id !== id));
+      })
+      .catch(error => {
+        console.error('Error deleting asset:', error);
+        alert('Failed to delete asset.');
+      });
+  };
 
   return (
     <div>
@@ -37,6 +49,7 @@ function AssetList() {
                 <th>Asset</th>
                 <th>Description</th>
                 <th>Location</th>
+                <th>Actions</th>
               </tr>
             </thead>
             <tbody>
@@ -45,6 +58,14 @@ function AssetList() {
                   <td>{asset.name}</td>
                   <td>{asset.description}</td>
                   <td>{asset.location}</td>
+                  <td>
+                    <button
+                      className="btn btn-danger"
+                      onClick={() => handleDelete(asset.id)}
+                    >
+                      Delete
+                    </button>
+                  </td>
                 </tr>
               ))}
             </tbody>
