@@ -6,13 +6,22 @@ function AddAsset() {
   const [formData, setFormData] = useState({
     name: '',
     description: '',
-    location: ''
+    location: '',
+    cost: '0'
   });
 
+  
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData({ ...formData, [name]: value });
+
+    // Validate the cost field to allow only numbers
+    if (name === 'cost') {
+      if (!/^\d*\.?\d*$/.test(value)) {
+        return; // Prevent updating the state if the value is not a valid number
+    }
   };
+}
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -66,6 +75,18 @@ function AddAsset() {
             onChange={handleChange}
             required
           />
+        </div>
+        <div className="form-group"> 
+        <label htmlFor="cost">Cost</label>
+        <input
+          type="number"
+          className="form-control"
+          id="cost"
+          name="cost"
+          value={formData.cost}
+          onChange={handleChange}
+          required
+        />
         </div>
         <button type="submit" className="btn btn-primary">Submit</button>
         <Link to="/" className="btn btn-secondary ml-2">Back to List</Link>

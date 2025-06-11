@@ -49,6 +49,7 @@ function AssetList() {
                 <th>Asset</th>
                 <th>Description</th>
                 <th>Location</th>
+                <th>Cost</th>
                 <th>Actions</th>
               </tr>
             </thead>
@@ -58,6 +59,7 @@ function AssetList() {
                   <td>{asset.name}</td>
                   <td>{asset.description}</td>
                   <td>{asset.location}</td>
+                  <td>{asset.cost}</td>
                   <td>
                     <button
                       className="btn btn-danger"
