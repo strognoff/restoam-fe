@@ -1,6 +1,6 @@
-import axios from 'axios';
-import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
+import React, { useState, useEffect } from 'react';
+import axios from 'axios';
 
 function AssetList() {
   const [assets, setAssets] = useState([]);
@@ -61,6 +61,7 @@ function AssetList() {
                   <td>{asset.location}</td>
                   <td>{asset.cost}</td>
                   <td>
+                    <Link to={`/edit/${asset.id}`} className="btn btn-warning mr-2">Edit</Link>
                     <button
                       className="btn btn-danger"
                       onClick={() => handleDelete(asset.id)}
