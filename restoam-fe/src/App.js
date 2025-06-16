@@ -2,7 +2,7 @@ import React from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import AssetList from './components/AssetList';
 import AddAsset from './components/AddAsset';
-import EditAsset from './components/EditAsset'; // Import the new component
+import EditAsset from './components/EditAsset';
 import Navbar from './components/Navbar';
 
 function App() {
