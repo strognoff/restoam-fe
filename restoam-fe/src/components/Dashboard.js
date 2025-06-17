@@ -40,10 +40,15 @@ function Dashboard() {
   };
 
   return (
+    <div>
+    <div className="main_dash">
+            <div className="jumbotron">
+            <h1 className="display-4">Dashboard</h1>
+             <p className="lead">Overview of your assets.</p>
+            <Link to="/assets" className="btn btn-primary mb-4">Go to Asset List</Link>
+    </div>
+    </div>
     <div className="container">
-      <h1 className="display-4">Dashboard</h1>
-      <p className="lead">Overview of your assets.</p>
-      <Link to="/assets" className="btn btn-primary mb-4">Go to Asset List</Link>
       {loading ? (
         <p>Loading data...</p>
       ) : (
@@ -52,6 +57,7 @@ function Dashboard() {
           <Pie data={calculateData()} />
         </div>
       )}
+    </div>
     </div>
   );
 }
