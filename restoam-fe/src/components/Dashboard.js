@@ -52,9 +52,8 @@ function Dashboard() {
       {loading ? (
         <p>Loading data...</p>
       ) : (
-        <div>
-          <h3>Asset Cost Distribution</h3>
-          <Pie data={calculateData()} />
+        <div style={{ width: '400px', height: '400px', margin: '0 auto' }}> {/* Adjust the size */}
+            <Pie data={calculateData()} />
         </div>
       )}
     </div>
